@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+
+import { Provider } from 'react-redux';
+import store from './redux'
+
 import MyBox from './MyBox';
+import ColorSelector from './ColorSelector';
 import './App.css';
 
 class App extends Component {
@@ -15,12 +20,15 @@ class App extends Component {
     const { titleColor } = this.state;
 
     return (
-      <div className="App">
-        <h1>Redux App</h1>
-          <MyBox titleColor={titleColor}/>
-          <p onClick={() => this.handleClick('green')}>turn green!</p>
-          <p onClick={() => this.handleClick('blue')}>turn blue!</p>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <h1>Redux App</h1>
+            <MyBox titleColor={titleColor}/>
+            <ColorSelector 
+              handleClick={this.handleClick}
+            />
+        </div>
+      </Provider>
     );
   }
 }
