@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-export default class ColorSelector extends Component {
+import { changeColor } from './redux/actions/colorAction'
+
+class ColorSelector extends Component {
   render() {
-    const { handleClick } = this.props;
+    const { changeColor } = this.props;
 
     return (
       <div>
-        <p onClick={() => handleClick('green')}>turn green!</p>
-        <p onClick={() => handleClick('blue')}>turn blue!</p>
+        <p onClick={() => changeColor('green')}>turn green!</p>
+        <p onClick={() => changeColor('blue')}>turn blue!</p>
       </div>
     )
   }
 }
+
+export default connect(null, { changeColor })(ColorSelector);

@@ -6,9 +6,9 @@ const defaultState = {
 
 const colorReducer = (state = defaultState, action) => {
   switch (action.type) {
-    // case  CHANGE_COLOR:
-    //       const { color } = action.payload;
-    //       return { ...state, color };
+    case  CHANGE_COLOR:
+      const { color } = action.payload;
+      return { ...state, color };
     default:
       return state;
   }
