@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import MyBox from './MyBox';
 import './App.css';
 
 class App extends Component {
+  state = {
+    titleColor: 'red'
+  }
+
+  handleClick = (color) => {
+    this.setState({ titleColor: color })
+  }
+
   render() {
+    const { titleColor } = this.state;
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Redux App</h1>
+          <MyBox titleColor={titleColor}/>
+          <p onClick={() => this.handleClick('green')}>turn green!</p>
+          <p onClick={() => this.handleClick('blue')}>turn blue!</p>
       </div>
     );
   }
